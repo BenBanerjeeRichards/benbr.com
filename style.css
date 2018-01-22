@@ -1,0 +1,7 @@
+.logo {
+    width: 4%;
+    padding: 10px;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+
+}
