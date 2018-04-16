@@ -88,8 +88,14 @@
       }
 
       function onPlayerReady(event) {
-        url = new URL(window.location) 
-        text = url.searchParams.get("text")
+        url = new URL(window.location)
+        t = url.searchParams.get("text")
+        if (t.length == 0) {
+          text = "It's always sunny in Philadelphia"
+        } else{
+          text = atob(t)
+        }
+
         document.getElementById("text").innerHTML = "\"" + text + "\""
       }
 
