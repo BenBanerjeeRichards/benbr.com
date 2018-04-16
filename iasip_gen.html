@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IASIP</title>
+
+	<script>
+		window.onload = function() {
+			document.getElementById("text").onkeyup = function() {
+			b64 = btoa(document.getElementById("text").value)
+			url = "http://benbr.com/iasip?text=" + b64
+			link = document.getElementById("link")
+			link.innerHTML = url
+			link.href = url
+		}
+	}
+	</script>
+</head>
+
+
+<body>
+	<input type="text" id="text" /> <br>
+	<a href="" id="link" target="black_"></a>
+</body>
+</html>
