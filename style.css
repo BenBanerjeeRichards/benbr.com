@@ -1,0 +1,20 @@
+#self {
+	width: 100%;
+    height:auto;
+}
+
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+}
+
+.navbar-nav > li {
+    display: inline-block;
+    float:none;
+}
+
+#name {
+	padding-top: 1%;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IASIP</title>
+
+	<style>
+
+    @font-face {
+      /* Not sure how many laws are being broken by using this font without license
+        but meming needs no license, as I have been told by The Laywer */
+    font-family: 'textileregular';
+    src: url('textile-webfont.woff2') format('woff2'),
+         url('textile-webfont.woff') format('woff'),
+         url('textile-webfont.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      font-family: "textileregular";
+      background-color: black;
+          overflow:hidden;
+
+    }
+
+		.videoContainer {
+			  position: absolute;
+			  width: 100%;
+			  height: 100%;
+			  top: 0;
+			  left: 0;
+			  bottom: 0;
+			  right: 0;
+			  display: flex;
+			  flex-direction: column;
+			  justify-content: center;
+			  align-items: center;
+			}
+
+			iframe {
+			  /* optional */
+			  width: 100%;
+			  height: 100%; 
+			}
+
+    .center {
+      color: white;
+      line-height: 1.5;
+      font-size: 4em;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    }
+
+
+	</style>
+
+
+	<script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '1080',
+          width: '1920',
+          videoId: 'pukZ8R522Sg',
+   		 playerVars: { 'autoplay': 1, 'controls': 0, 'modestbranding': 1, 'showinfo': 0},
+          frameborder: '0',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      function onPlayerReady(event) {
+        url = new URL(window.location) 
+        text = url.searchParams.get("text")
+        document.getElementById("text").innerHTML = "\"" + text + "\""
+      }
+
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING) {
+        	// Video started playing
+        	// Start timing when we should start playing video
+          window.setTimeout(showVideo, 4000)
+        }
+      }
+      function showVideo() {
+        document.getElementById("player").style.display = "block"
+      }
+
+      function stopVideo() {
+        player.stopVideo();
+      }
+
+    </script>
+
+</head>
+<body>
+ 	<div id="player" class="videoContainer" style="display: none;"></div>
+	  <div id="title" > <div class="center" id="text">
+    </div></div>
+</body>
+</html> 
