@@ -14,6 +14,11 @@
 			$("#submit").click(function() {
 				generate();
 			});
+
+			$("#form").submit(function(e) {
+				e.preventDefault();
+				generate();
+			})
 		}
 
 		function generate() {
@@ -38,13 +43,62 @@
 			})
 		}
 	</script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+	<style>
+		.input-group {
+			width: 50%;
+			margin: 0 auto;
+			padding-top: 5%;
+		}
+
+		.input-group-btn {
+			padding-left: 10px;
+		}
+
+		h1, p {
+			text-align: center;
+		}
+
+		body {
+			padding-top: 3%;
+		}
+
+		#credits {
+			position: absolute;
+			bottom: 5%;
+
+			margin-left: auto;
+			margin-right: auto;
+			left: 0;
+			right: 0;
+		}
+
+		#info {
+			padding-top: 2%;
+		}
+	</style>
 </head>
 
 
 <body>
-	<h1>Generate It's always sunny in Philadelphia titles</h1>
-	Title: <input type="text" id="text" placeholder="The gang solves the North Korea problem"> 
-	<button id="submit">Generate</button> <br />
-	<a href="" id="link" target="black_"></a>
+	<h1> IASIP Opening Title Generator </h1>
+	<p>Create your own "It's always sunny in Philadelphia" opening titles</p>
+	<form id="form">
+	<div class="input-group">
+		<input class="form-control" type="text" id="text" placeholder="The gang solves the North Korea problem"> 
+
+		<span class="input-group-btn">
+			<input type="submit" id="submit" value="Create" class="btn btn-primary"/> <br />
+		</span>
+	</div>
+</form>
+	<p id="info">Pressing 'Create' sends you to a unique link that you can share with others</p>
+	<p id="credits">
+		Doesn't really work on mobile (only the card works, not the full titles) <br>
+		Card design based on Alexander Lozada's <a href="http://alexanderlozada.com/iasip/">IASIP card creater</a> <br>
+		Doesn't work on Edge (yet) 
+
+	</p>
 </body>
 </html>
