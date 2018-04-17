@@ -1,12 +1,26 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
+var cors = require("cors");
 var randomstring = require("randomstring");
 var bodyParser = require('body-parser');
 var RateLimit = require('express-rate-limit');
 
+app.use(cors());
+app.options('*', cors());
 app.use(bodyParser.json());       
 app.use(express.json());
+
+var config = require('./config.js').get(process.env.NODE_ENV);
+
+
+// app.use(function(req, res, next) {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader('Access-Control-Allow-Methods', '*');
+//   res.setHeader("Access-Control-Allow-Headers", "*");
+//   next();
+// });
+
 
 var limiter = new RateLimit({
   windowMs: 1 * 60 * 1000, 
@@ -17,7 +31,7 @@ var limiter = new RateLimit({
 app.use('/newTitle', limiter);
 
 // TODO dev and prod profiles
-mongoose.connect('mongodb://localhost/iasip');
+mongoose.connect(config.database);
 var db = mongoose.connection;
 
 var Title;
@@ -56,7 +70,7 @@ app.get('/title', function (request, response) {
 
 app.post("/newTitle", function(req, res){
   // Try to find existing id
-  var titleStr = req.body.title;
+  var titleStr = req.body.text;
   var findQuery = {text:titleStr};
   Title.find(findQuery, function(err, mapping){
     if (mapping.length == 1) {
