@@ -3,24 +3,48 @@
 <head>
 	<meta charset="UTF-8">
 	<title>IASIP</title>
-
+	<script
+	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+  
 	<script>
+		var root = "http://206.189.72.180:3000/";
 		window.onload = function() {
-			document.getElementById("text").onkeyup = function() {
-			b64 = btoa(document.getElementById("text").value)
-			url = "http://benbr.com/iasip?text=" + b64
-			link = document.getElementById("link")
-			link.innerHTML = url
-			link.href = url
+			$("#submit").click(function() {
+				generate();
+			});
 		}
-	}
+
+		function generate() {
+			title = $("#text").val();
+			
+			// Get ID
+			$.ajax({
+				url: root + "newTitle",
+				type: "post",
+				dataType: "json",
+				data: JSON.stringify({text: title}),
+				processData:false,
+				contentType: "application/json",
+				success: function(data) {
+					console.log(data)
+					url = window.location.href.replace("iasip_gen", "iasip") + "?id=" + data.id;
+					window.location = url;// Redirect
+				},
+				error: function(xhr, status, error) {
+					console.log(xhr, status, error);
+				}
+			})
+		}
 	</script>
 </head>
 
 
 <body>
 	<h1>Generate It's always sunny in Philadelphia titles</h1>
-	Title: <input type="text" id="text" /> <br>
+	Title: <input type="text" id="text" placeholder="The gang solves the North Korea problem"> 
+	<button id="submit">Generate</button> <br />
 	<a href="" id="link" target="black_"></a>
 </body>
 </html>

@@ -4,6 +4,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>IASIP</title>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 
 	<style>
 
@@ -63,6 +67,8 @@
 
 
 	<script>
+  		var root = "http://206.189.72.180:3000/";
+
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -78,7 +84,7 @@
           height: '1080',
           width: '1920',
           videoId: 'pukZ8R522Sg',
-   		 playerVars: { 'autoplay': 1, 'controls': 0, 'modestbranding': 1, 'showinfo': 0},
+   		 playerVars: { 'autoplay': 0, 'controls': 0, 'modestbranding': 1, 'showinfo': 0},
           frameborder: '0',
           events: {
             'onReady': onPlayerReady,
@@ -90,13 +96,31 @@
       function onPlayerReady(event) {
         url = new URL(window.location)
         t = url.searchParams.get("text")
-        if (t.length == 0) {
-          text = "It's always sunny in Philadelphia"
+        console.log(t);
+        if (t === null || t.length == 0) {
+          // use ID param instead
+          var id = url.searchParams.get("id");
+          $.ajax({
+              url: root + "title",
+            type: "get",
+            data: {id:id},
+            success: function(data) {
+              console.log(data)
+              document.getElementById("text").innerHTML = "\"" + data.text + "\""
+
+              // Start video
+              event.target.playVideo();
+            },
+            error: function(xhr, status, error) {
+              console.log(xhr, status, error);
+            }
+          })
         } else{
           text = atob(t)
+          document.getElementById("text").innerHTML = "\"" + text + "\""
+          event.target.playVideo();
         }
 
-        document.getElementById("text").innerHTML = "\"" + text + "\""
       }
 
       function onPlayerStateChange(event) {
