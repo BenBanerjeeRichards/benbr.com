@@ -71,6 +71,8 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
 	<style>
 
@@ -128,15 +130,22 @@
     padding-right: 10%;
     }
 
-    .inner-box {
+    #inner-box {
     	background-color: #040004;
     	margin-left: 5.9%;
     	margin-right: 5.8%;
     }
 
 
-	</style>
+    #ended {
+    	margin: 0 auto;
+    	width: 20%;
+    	padding-top: 10%;
+    }
 
+
+	</style>
+		
 	<script>
   		var root = "http://206.189.72.180:3000/";
 
@@ -195,10 +204,17 @@
       }
 
       function onPlayerStateChange(event) {
+
         if (event.data == YT.PlayerState.PLAYING) {
         	// Video started playing
         	// Start timing when we should start playing video
           window.setTimeout(showVideo, 4000)
+        }
+
+        if (event.data == YT.PlayerState.ENDED) {
+        	document.getElementById("player").style.display = "none";
+        	document.getElementById("inner-box").style.display = "none";
+        	document.getElementById("ended").style.display = "block";
         }
       }
       function showVideo() {
@@ -209,15 +225,34 @@
         player.stopVideo();
       }
 
+      window.onload = function() {
+      	$("#again").click(function() {
+	      	location.reload();
+      	});
+
+      	$("#new").click(function() {
+	      	window.location.href = "./iasip_gen.html"
+      	});
+
+      }
+
+
     </script>
 
 </head>
 <body>
  	<div id="player" class="videoContainer" style="display: none;"></div>
-	<div class="inner-box">
+	<div class="inner-box" id="inner-box">
 		<div id="title">
 		<div class="center" id="text"> </div>
 	</div>
 	</div>
+
+	<div id="ended" style="display: none">
+		<button class="btn btn-primary" id="again"> Play again </button>
+		<button class="btn btn-primary" id="new"> Create your own </button> 
+		<div style="color: white; padding-top: 10%"> Created by <a href="benbr.com">Ben Banerjee-Richards</a></div>
+	</div>
+
 </body>
 </html> 
