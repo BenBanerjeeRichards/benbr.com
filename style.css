@@ -16,21 +16,3 @@
 
 }
 
-#banner {
-    width: 500px;
-}
-
-#banner-left {
-    width: 33.33%;
-    background-color: aqua;
-}
-
-#banner-right {
-    width: 33.33%;
-    background-color:darkred;
-}
-
-#banner-middle {
-    width: 33.33%;
-    background-color: green;
-}
