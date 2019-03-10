@@ -1,9 +1,13 @@
 .logo {
-    width: 4%;
+    width: 50px;
     padding: 10px;
     height: auto;
     image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
 
+}
+
+.icon-link {
+    padding-right: 50px;
 }
 
 #self {
