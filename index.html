@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>Ben Banerjee-Richards</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+            integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
@@ -22,15 +25,107 @@
     </ul>
 </nav>
 <div class="container">
-    <div class="row">
-        <div class="col text-center align-self-center">
-            <h1>Ben Banerjee-Richards</h1>
-            <p id="about-sub">Computer science student at the University of Edinburgh</p>
+    <div class="row" id="main">
+        <div class="col-4">
+            <a target="_blank" href="https://video.twimg.com/tweet_video/Dnzz_K7XUAAyEsz.mp4"><img width="250px"
+                                                                                                   src="me%20copy%202.png"
+                                                                                                   alt="Me!"></a>
+            <!--<a href="https://github.com/benbanerjeerichards">Github <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" class="logo"/></a>-->
+            <!--<a href="https://www.linkedin.com/in/ben-banerjee-richards-a43303103/">Linkedin<img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg" class="logo"/></a>-->
+        </div>
 
-            <a href="https://github.com/benbanerjeerichards">Github <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" class="logo"/></a>
-            <a href="https://www.linkedin.com/in/ben-banerjee-richards-a43303103/">Linkedin<img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg" class="logo"/></a>
+        <div class="col-8">
+            <h1>Hi! I'm Ben</h1>
+            <p>
+                I'm a 3rd year computer science student studying at The University of Edinburgh.
+            </p>
+
+            <p>
+                <!--TODO maybe put more thought into this than just adapting my tinder bio-->
+                I enjoy writing strangely useless software, listening to wierd indie music and then trying to learn
+                those songs on guitar. I also know way too much about coffee
+            </p>
+
+            <p>
+                Take a read through my software related adventures in my portfolio below
+            </p>
         </div>
     </div>
+
+    <div id="port">
+        <h2 id="port-title">What I've been working on</h2>
+
+        <div class="row">
+            <div class="col-4">
+                <a href="poster.png" target="_blank"><img src="poster.png" width="250px"></a>
+            </div>
+            <div class="col-8">
+                <h3>My Spotify history</h3>
+                <a href="https://github.com/BenBanerjeeRichards/Spotify-history-downloader"><img
+                        src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" width="20px"/> BenBanerjeeRichards/Spotify-history-downloader</a>
+                <p class="first-para">
+                    According to Spotify wrapped for 2018, I spend 11% of my life listening to music (that's 60,000
+                    minutes last year).
+                    Naturally, I wanted to analyse my listening history but Spotify only allows you to download the last
+                    50 songs that
+                    you listened to. What started as a small hourly cron script quickly grew more features including the
+                    ability
+                    to import listening using Spotify's GDPR data export and export data to Github for version control.
+                </p>
+
+                <p>
+                    You can see my latest creation: my year in music in a poster, filling a gap on a blank wall in my
+                    room.
+                    I spend a week designing an algorithm through trial and error to lay out the poster in a
+                    aesthetically
+                    pleasing way, with my favourite albums spaced out properly.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <a href="genres.png" target="_blank"><img src="genres.png" width="250px"></a>
+            </div>
+            <div class="col-8">
+                <p>
+                    Another creation from my Spotify data is a massive genre cloud showing my favourite genres. It's
+                    great to know
+                    that I absolutly love genres such as "anthem emo" and "australian garage punk".
+                </p>
+
+                <p>
+                    R&D is continuing into producing more insightful analysis for this site.
+                </p>
+            </div>
+        </div>
+
+        <div class="row" id="benlang">
+            <div class="col-4">
+                <a href="benlang.png" target="_blank"><img src="benlang.png" width="250px"></a>
+            </div>
+            <div class="col-8">
+                <h3>BenLang - It's turing complete!</h3>
+                <a href="https://github.com/BenBanerjeeRichards/BenLang"><img
+                        src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" width="20px"/> BenBanerjeeRichards/BenLang</a>
+
+                <p class="first-para">
+                    Last year I realized the world needed something - a new programming language. And so BenLang was
+                    born.
+                    A somewhat featured programming language for which I built a compiler for, using ANTLR 4 and python.
+                    The compiler produces MIPS assembly as it's output.
+                </p>
+
+                <p>
+                    The language includes basic features such as loops, conditionals, variables, type checking and I/O.
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+
+
 </div>
 
 
